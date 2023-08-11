@@ -22,6 +22,36 @@ const Homepage = () => {
       flexWrap: 'wrap',
       margin: '20px'
       }}>
+      <Box p={2}>
+          <Typography variant="h4" mb={2} fontWeight="bold">
+            SCIFI Images
+          </Typography>
+          <Card
+            onClick={() => navigate("/scifi-image")}
+            sx={{
+              boxShadow: 2,
+              borderRadius: 5,
+              height: 190,
+              width: 200,
+              "&:hover": {
+                border: 2,
+                boxShadow: 0,
+                borderColor: "primary.dark",
+                cursor: "pointer",
+              },
+            }}
+          >
+            <ChatRounded
+              sx={{ fontSize: 80, color: "primary.main", mt: 2, ml: 2 }}
+            />
+            <Stack p={3} pt={0}>
+              <Typography fontWeight="bold" variant="h5">
+                Scifi Image
+              </Typography>
+              <Typography variant="h6">Generate science fiction images</Typography>
+            </Stack>
+          </Card>
+        </Box>
         <Box p={2}>
           <Typography variant="h4" mb={2} fontWeight="bold">
             Text Generation
@@ -118,7 +148,7 @@ const Homepage = () => {
         </Box>
         <Box p={2}>
           <Typography variant="h4" mb={2} fontWeight="bold">
-            Javascript Converter
+            Code Generation
           </Typography>
           <Card
             onClick={() => navigate("/js-converter")}
@@ -143,17 +173,17 @@ const Homepage = () => {
                 JS CONVERTER
               </Typography>
               <Typography variant="h6">
-                Trasnlate english to javascript code
+                Translate english to javascript code
               </Typography>
             </Stack>
           </Card>
         </Box>
         <Box p={2}>
           <Typography variant="h4" mb={2} fontWeight="bold">
-            AI SCIFI Images
+            Text Correction
           </Typography>
           <Card
-            onClick={() => navigate("/scifi-image")}
+            onClick={() => navigate("/text-corrector")}
             sx={{
               boxShadow: 2,
               borderRadius: 5,
@@ -172,12 +202,15 @@ const Homepage = () => {
             />
             <Stack p={3} pt={0}>
               <Typography fontWeight="bold" variant="h5">
-                Scifi Image
+                Spelling Corrector
               </Typography>
-              <Typography variant="h6">Generate Scifi images</Typography>
+              <Typography variant="h6">
+                Corrects spelling mistakes in text
+              </Typography>
             </Stack>
           </Card>
         </Box>
+        
       </Box>
     </Box>
   );

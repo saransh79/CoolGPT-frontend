@@ -14,22 +14,22 @@ import {
 } from "@mui/material";
 import { BASE_URL } from "../service";
 
-const ChatBot = () => {
+const Summary = () => {
   const theme = useTheme();
   //media
   const isNotMobile = useMediaQuery("(min-width: 1000px)");
   // states
   const [text, settext] = useState("");
-  const [response, setResponse] = useState("");
+  const [answer, setAnswer] = useState("");
   const [error, setError] = useState("");
 
   //register ctrl
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`${BASE_URL}/api/v1/openai/chatbot`, { text });
+      const { data } = await axios.post(`${BASE_URL}/api/v1/openai/edits`, { text });
       console.log(data);
-      setResponse(data);
+      setAnswer(data);
     } catch (err) {
       console.log(error);
       if (err.response.data.error) {
@@ -57,10 +57,10 @@ const ChatBot = () => {
         </Alert>
       </Collapse>
       <form onSubmit={handleSubmit}>
-        <Typography variant="h3">Ask with Chatbot</Typography>
+        <Typography variant="h3">Text Correction</Typography>
 
         <TextField
-          placeholder="add your text"
+          placeholder="Add your text"
           type="text"
           multiline={true}
           required
@@ -79,14 +79,14 @@ const ChatBot = () => {
           size="large"
           sx={{ color: "white", mt: 2 }}
         >
-          Chat
+          Submit
         </Button>
         <Typography mt={2}>
-          Not this tool ? <Link to="/">GO BACK</Link>
+          Try another tool ? <Link to="/">GO BACK</Link>
         </Typography>
       </form>
 
-      {response ? (
+      {answer ? (
         <Card
           sx={{
             mt: 4,
@@ -98,7 +98,7 @@ const ChatBot = () => {
             bgcolor: "background.default",
           }}
         >
-          <Typography p={2}>{response}</Typography>
+          <Typography p={2}>{answer}</Typography>
         </Card>
       ) : (
         <Card
@@ -121,7 +121,7 @@ const ChatBot = () => {
               lineHeight: "450px",
             }}
           >
-            Bot Response
+            Corrected Text Will Appear Here
           </Typography>
         </Card>
       )}
@@ -129,4 +129,4 @@ const ChatBot = () => {
   );
 };
 
-export default ChatBot;
+export default Summary;
